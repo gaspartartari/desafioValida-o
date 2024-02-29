@@ -31,6 +31,7 @@ public class MovieController {
         return ResponseEntity.ok(result);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_VISITOR', 'ROLE_MEMBER')")
     @GetMapping
     public ResponseEntity<Page<MovieCardDTO>> findByGenre(
                     @Valid @RequestParam(value = "genreId", defaultValue = "0") String genreId, 
